@@ -149,6 +149,7 @@ h2 {
     color: var(--white-1);
     box-shadow: 0 0 0.15rem 0.15rem rgba(var(--hne-blue-rgb), 0.4);
     transition: color 250ms;
+    height: 6rem;
 }
 
 .welcome-start-button button:hover,
