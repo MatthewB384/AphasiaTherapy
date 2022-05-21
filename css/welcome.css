@@ -1,0 +1,103 @@
+.heading {
+    flex-grow: 1;
+}
+
+.nav {
+    display: flex;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.clinician-info {
+    display: flex;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.clinician-info button {
+    height: 6rem;
+    width: 6rem;
+    font-size: 4em;
+    border-radius: 100vh;
+    background-color: var(--white-1);
+    color: var(--white-2);
+    font-weight: 700;
+    border: 0.24rem solid var(--white-2);
+    box-shadow: 0 0 0.15rem 0.15rem rgba(var(--white-2-rgb), 0.4);
+    transition: border 250ms, box-shadow 250ms, color 250ms,
+        -webkit-box-shadow 250ms;
+}
+
+.clinician-info button:focus,
+.clinician-info button:hover {
+    outline: none;
+    color: var(--hne-blue);
+    border: 0.24rem solid var(--hne-blue);
+    box-shadow: 0 0 0.15rem 0.15rem rgba(var(--hne-blue-rgb), 0.4);
+}
+
+.clinician-info label {
+    font-size: 1.5em;
+    margin: auto 0 0 0.5em;
+    font-weight: 700;
+    color: var(--white-2);
+    transition: color 250ms;
+}
+
+.clinician-info button:focus + label,
+.clinician-info button:hover + label {
+    color: var(--hne-blue);
+}
+
+.start {
+    height: 6rem;
+}
+
+.start button {
+    height: 100%;
+    width: 20em;
+    border: none;
+    position: relative;
+    border-radius: 100vh;
+    display: flex;
+    justify-content: center;
+    background-color: var(--hne-blue);
+    color: var(--white-1);
+    box-shadow: 0 0 0.15rem 0.15rem rgba(var(--hne-blue-rgb), 0.4);
+    transition: color 250ms;
+}
+
+.start button:hover,
+.start button:focus {
+    color: var(--light-blue);
+    box-shadow: 0 0 0.15rem 0.15rem rgba(0, 0, 0, 0.4);
+    outline: none;
+}
+
+.start button a {
+    color: inherit;
+    text-decoration: none;
+    margin: 0 1.5rem 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 4.5em;
+}
+
+.start button a::before {
+    --border-width: 0.7rem;
+    content: "\276F";
+    display: inline-flex;
+    position: absolute;
+    left: 0;
+    padding: 0 0 0.4rem 0.4rem;
+    height: calc(100% - 2 * var(--border-width) - 0.4rem);
+    aspect-ratio: 1 / 1;
+    font-weight: 900;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100vh;
+    border: var(--border-width) solid currentColor;
+    box-shadow: 0 0 0.15rem 0.15rem rgba(0, 0, 0, 0.4);
+}
