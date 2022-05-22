@@ -169,7 +169,7 @@ h2 {
     font-size: 4.5em;
 }
 
-.welcome-start-button button a::before {
+.welcome-start-button button a::after {
     --border-width: 0.7rem;
     content: "\276F";
     display: inline-flex;
@@ -285,17 +285,36 @@ h2 {
 
 .activity-select-cards .card {
     color: inherit;
+    position: relative;
     border: 0.2rem solid currentColor;
     border-radius: 1rem;
     background-color: var(--white-1);
     padding: 0.5rem 1rem 0.2rem 1rem;
-    width: 26ch;
-    height: 18ch;
+    width: 15rem;
     box-shadow: 0 0 0.5rem currentColor;
     text-align: left;
     transition: color 350ms;
     display: flex;
     flex-direction: column;
+}
+
+.activity-select-cards .card h1::after {
+    --border-width: 0.3rem;
+    --btn-height: 3rem;
+    content: "\276F";
+    position: absolute;
+    top: 0.8rem;
+    right: 0.8rem;
+    font-size: 2.3rem;
+    display: inline-flex;
+    padding: 0.1ch 0.1ch 0.25ch 0.25ch;
+    height: calc(var(--btn-height) - 2 * var(--border-width) - 0.35ch);
+    width: calc(var(--btn-height) - 2 * var(--border-width) - 0.35ch);
+    font-weight: 900;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100vh;
+    border: var(--border-width) solid currentColor;
 }
 
 .activity-select-cards .card:hover,
