@@ -16,20 +16,22 @@
         <div class="bg"> </div>
     </div>
 
-    <ul class="navmenu">
-        <li><a href="">Home</a><button onclick="close_nav_menu()">&#10006;</button></li>
-        <li class="droppable"><a href="">IPM</a><button>&#9660;</button></li>
-        <li class="droppable"><a href="">PCA</a><button>&#9660;</button></li>
-        <li class="droppable"><a href="">Sound Deletion</a><button>&#9660;</button></li>
-    </ul>
+
 
     <main>
+        <ul id="navmenu" class="collapsable">
+            <li><a href="">Home</a><button onclick="close_popup('#navmenu');">&#10006;</button></li>
+            <li class="droppable"><a href="home.html">IPM</a><button>&#9660;</button></li>
+            <li class="droppable"><a href="">PCA</a><button>&#9660;</button></li>
+            <li class="droppable"><a href="">Sound Deletion</a><button>&#9660;</button></li>
+        </ul>
+
         <div class="heading">
-            <div class="nav-3-lines" onclick="open_nav_menu();">
+            <label for='navmenu' class="nav-3-lines" onclick="open_popup('#navmenu');">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </label>
             <div class="heading">
                 <h1>Cool Word Thing</h1>
             </div>
@@ -49,7 +51,7 @@
                 <p>Sound Deletion</p>
             </button>
         </div>
-        <div class="nav">
+        <div class="cmd-pallate">
             <div class="clinician-info">
                 <button id="clinician-info-button">i</button>
                 <label for="clinician-info-button">Informa<wbr>tion for<br>Clini<wbr>cians</label>

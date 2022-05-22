@@ -75,7 +75,7 @@ h2 {
 .bg {
     position: absolute;
     height: calc(100vh + 100vw);
-    aspect-ratio: 1 / 1;
+    width: calc(100vh + 100vw);
     top: -50vw;
     left: -50vh;
     z-index: -1;
@@ -89,7 +89,8 @@ h2 {
     gap: 1rem;
 }
 
-.nav {
+.cmd-pallate {
+    --pallate-height: 6rem;
     display: flex;
     margin: 1rem 0;
     flex-wrap: wrap;
@@ -99,12 +100,11 @@ h2 {
 .clinician-info {
     display: flex;
     flex-grow: 1;
-    flex-shrink: 1;
 }
 
 .clinician-info button {
-    height: 6rem;
-    width: 6rem;
+    height: var(--pallate-height);
+    width: var(--pallate-height);
     font-size: 4em;
     border-radius: 100vh;
     background-color: var(--white-1);
@@ -176,8 +176,8 @@ h2 {
     position: absolute;
     left: 0;
     padding: 0 0 0.4rem 0.4rem;
-    height: calc(100% - 2 * var(--border-width) - 0.4rem);
-    aspect-ratio: 1 / 1;
+    height: calc(var(--pallate-height) - 2 * var(--border-width) - 0.4rem);
+    width: calc(var(--pallate-height) - 2 * var(--border-width) - 0.4rem);
     font-weight: 900;
     align-items: center;
     justify-content: center;
@@ -209,7 +209,7 @@ h2 {
     color: #000;
 }
 
-.navmenu {
+#navmenu {
     position: absolute;
     top: 0;
     left: 0;
@@ -218,25 +218,26 @@ h2 {
     margin: 0;
     padding: 0;
     list-style-type: none;
+    display: none;
     font-size: 2.5rem;
     z-index: 1;
     width: 15ch;
     box-shadow: 0 0 0.3rem 0.3rem rgba(0, 0, 0, 0.4);
-    transform: translateX(-100%);
+    transform: translateX(calc(-100% - 0.3rem));
     transition: transform 800ms ease-in-out;
 }
 
-.navmenu.open {
+#navmenu.open {
     transform: none;
 }
 
-.navmenu li {
+#navmenu li {
     display: flex;
     height: 3.5rem;
     color: var(--white-2);
 }
 
-.navmenu li a {
+#navmenu li a {
     border-radius: 0 100vh 100vh 0;
     line-height: 140%;
     flex-grow: 1;
@@ -245,13 +246,13 @@ h2 {
     color: inherit;
 }
 
-.navmenu li a,
-.navmenu li button {
+#navmenu li a,
+#navmenu li button {
     height: 100%;
     transition: background-color 250ms, color 250ms;
 }
 
-.navmenu li button {
+#navmenu li button {
     border: none;
     font-size: 1.5rem;
     width: 4ch;
@@ -264,10 +265,10 @@ h2 {
     color: inherit;
 }
 
-.navmenu li a:hover,
-.navmenu li button:hover,
-.navmenu li a:focus,
-.navmenu li button:focus {
+#navmenu li a:hover,
+#navmenu li button:hover,
+#navmenu li a:focus,
+#navmenu li button:focus {
     background-color: var(--white-2);
     z-index: 2;
     outline: none;
