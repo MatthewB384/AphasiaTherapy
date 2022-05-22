@@ -7,7 +7,7 @@ function open_popup(selector) {
     popups[selector] = true;
     let elem = document.querySelector(selector);
     elem.style.display = "block"; //closed popups have display none
-    setTimeout(() => elem.classList.add("open"), 0); //has to be a settimeout otherwise the transition doesnt play
+    setTimeout(() => elem.classList.add("open"), 3); //has to be a settimeout otherwise the transition doesnt play
 }
 
 function close_popup(selector) {
