@@ -52,29 +52,18 @@ main > *:nth-last-of-type(2) {
 
 h1 {
     margin: 0.3rem;
-    font-size: 4em;
+    font-size: 4rem;
     line-height: 0.9em;
-}
-
-@media (orientation: portrait) and (max-width: 768px) {
-    h1 {
-        font-size: 2.5rem;
-    }
-}
-
-@media (orientation: portrait) and (max-width: 500px) {
-    h1 {
-        font-size: 7vw;
-    }
-    html {
-        font-size: 0.8rem;
-    }
 }
 
 h2 {
     margin: 0.3rem;
     font-size: 1.5em;
     color: var(--white-2);
+}
+
+p {
+    font-size: 1.2rem;
 }
 
 .bg-wrap {
@@ -157,7 +146,7 @@ h2 {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    min-width: 15rem;
+    min-width: 16rem;
     height: 6rem;
     padding-right: 2rem;
     font-size: 0.85rem;
@@ -308,8 +297,9 @@ h2 {
     border-radius: 1rem;
     background-color: var(--white-1);
     padding: 0.5rem 1rem 0.2rem 1rem;
-    width: 15rem;
-    min-width: 11rem;
+    flex-basis: 16rem;
+    flex-grow: 1;
+    min-width: 15rem;
     box-shadow: 0 0 0.5rem currentColor;
     text-align: left;
     transition: color 350ms;
@@ -318,17 +308,17 @@ h2 {
 }
 
 .activity-select-cards .card h1::after {
-    --border-width: 0.1em;
-    --btn-height: 1em;
+    --border-width: 0.3rem;
+    --btn-height: 3.5rem;
     content: "\276F";
     position: absolute;
-    font-size: 0.8em;
-    top: 0.2em;
-    right: 0.2em;
+    font-size: 3rem;
+    top: 0.5rem;
+    right: 0.5rem;
     display: inline-flex;
-    padding: 0.3ch 0.3ch 0.5ch 0.5ch;
-    height: calc(var(--btn-height) - 2 * var(--border-width) - 0.35ch);
-    width: calc(var(--btn-height) - 2 * var(--border-width) - 0.35ch);
+    padding: 0.4ch 0.4ch 0.5ch 0.5ch;
+    height: calc(var(--btn-height) - 2 * var(--border-width) - 0.9ch);
+    width: calc(var(--btn-height) - 2 * var(--border-width) - 0.9ch);
     font-weight: 900;
     align-items: center;
     justify-content: center;
@@ -340,4 +330,16 @@ h2 {
 .activity-select-cards .card:focus {
     color: var(--hne-blue);
     outline: none;
+}
+
+@media (orientation: portrait) and (max-width: 500px) {
+    html {
+        font-size: 13px;
+    }
+}
+
+@media (orientation: portrait) and (max-width: 400px) {
+    html {
+        font-size: 10px;
+    }
 }
