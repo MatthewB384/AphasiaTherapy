@@ -27,6 +27,27 @@ function close_popup(selector) {
     );
 }
 
+function toggle_navmenu_sect(elem) {
+    console.log(elem);
+    panel = elem.parentNode.nextElementSibling;
+    if (panel.classList.toggle("open")) {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+        elem.classList.add("open");
+        elem.innerHTML = "&#x25B2";
+    } else {
+        elem.blur();
+        panel.style.maxHeight = 0;
+        elem.classList.remove("open");
+        elem.innerHTML = "&#9660";
+    }
+}
+
+document.querySelectorAll(".nav-expand-btn").forEach((elem) => {
+    elem.onclick = (event) => {
+        toggle_navmenu_sect(event.target);
+    };
+});
+
 document.onclick = function (event) {
     for (const popup of popups) {
         if (

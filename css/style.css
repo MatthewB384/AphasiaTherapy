@@ -9,6 +9,8 @@
     --white-1: #e7e7e7;
     --white-2-rgb: 150, 150, 150; /* #969696 */
     --white-2: rgb(var(--white-2-rgb));
+    --white-3-rgb: 120, 120, 120;
+    --white-3: rgb(var(--white-3-rgb));
 }
 
 @keyframes rotate {
@@ -66,6 +68,21 @@ p {
     font-size: 1.2rem;
 }
 
+button {
+    background-color: var(--white-1);
+    color: var(--white-2);
+    box-shadow: 0 0 0.15rem 0.15rem rgba(var(--white-2-rgb), 0.4);
+    border: 0.24rem solid currentColor;
+    transition: box-shadow 250ms, color 250ms, -webkit-box-shadow 250ms;
+}
+
+button:focus,
+button:hover {
+    outline: none;
+    color: var(--hne-blue);
+    box-shadow: 0 0 0.15rem 0.15rem rgba(var(--hne-blue-rgb), 0.4);
+}
+
 .bg-wrap {
     position: absolute;
     width: 100%;
@@ -99,11 +116,12 @@ p {
     margin: 1rem 0;
     flex-wrap: wrap;
     gap: 2rem;
+    justify-content: space-between;
+    align-items: end;
 }
 
 .clinician-info {
     display: flex;
-    flex-grow: 1;
 }
 
 .clinician-info button {
@@ -111,21 +129,7 @@ p {
     min-width: var(--pallate-height);
     font-size: 4em;
     border-radius: 100vh;
-    background-color: var(--white-1);
-    color: var(--white-2);
     font-weight: 700;
-    border: 0.24rem solid var(--white-2);
-    box-shadow: 0 0 0.15rem 0.15rem rgba(var(--white-2-rgb), 0.4);
-    transition: border 250ms, box-shadow 250ms, color 250ms,
-        -webkit-box-shadow 250ms;
-}
-
-.clinician-info button:focus,
-.clinician-info button:hover {
-    outline: none;
-    color: var(--hne-blue);
-    border: 0.24rem solid var(--hne-blue);
-    box-shadow: 0 0 0.15rem 0.15rem rgba(var(--hne-blue-rgb), 0.4);
 }
 
 .clinician-info label {
@@ -141,7 +145,7 @@ p {
     color: var(--hne-blue);
 }
 
-.welcome-start-button {
+.welcome-start-btn {
     position: relative;
     display: flex;
     justify-content: flex-end;
@@ -149,7 +153,7 @@ p {
     min-width: 16rem;
     height: 6rem;
     padding-right: 2rem;
-    font-size: 0.85rem;
+    font-size: 3.8em;
     border-radius: 100vh;
     background-color: var(--hne-blue);
     color: var(--white-1);
@@ -157,24 +161,23 @@ p {
     transition: color 250ms;
 }
 
-.welcome-start-button:hover,
-.welcome-start-button:focus-within {
+.welcome-start-btn:hover,
+.welcome-start-btn:focus-within {
     color: var(--light-blue);
     box-shadow: 0 0 0.15rem 0.15rem rgba(0, 0, 0, 0.4);
     outline: none;
 }
 
-.welcome-start-button a {
+.welcome-start-btn a {
     color: inherit;
     text-decoration: none;
-    font-size: 4.5em;
 }
 
-.welcome-start-button a:focus {
+.welcome-start-btn a:focus {
     outline: none;
 }
 
-.welcome-start-button a::after {
+.welcome-start-btn::after {
     --border-width: 0.7rem;
     content: "\276F";
     display: inline-flex;
@@ -190,6 +193,11 @@ p {
     border-radius: 100vh;
     border: var(--border-width) solid currentColor;
     box-shadow: 0 0 0.15rem 0.15rem rgba(0, 0, 0, 0.4);
+}
+
+.see-results-btn {
+    padding: 0 1.5rem;
+    border-radius: 1rem;
 }
 
 .nav-3-lines {
@@ -216,7 +224,7 @@ p {
     color: #000;
 }
 
-#navmenu {
+.navmenu {
     position: absolute;
     top: 0;
     left: 0;
@@ -228,23 +236,24 @@ p {
     display: none;
     font-size: 2.5rem;
     z-index: 1;
-    width: 15ch;
+    min-width: 15ch;
     box-shadow: 0 0 0.3rem 0.3rem rgba(0, 0, 0, 0.4);
     transform: translateX(calc(-100% - 0.3rem));
     transition: transform 800ms ease-in-out;
+    overflow: hidden auto;
 }
 
-#navmenu.open {
+.navmenu.open {
     transform: none;
 }
 
-#navmenu li {
+.navmenu li {
     display: flex;
     height: 3.5rem;
     color: var(--white-2);
 }
 
-#navmenu li a {
+.navmenu li a {
     border-radius: 0 100vh 100vh 0;
     line-height: 140%;
     flex-grow: 1;
@@ -253,29 +262,33 @@ p {
     color: inherit;
 }
 
-#navmenu li a,
-#navmenu li button {
+.navmenu li a,
+.nav-btn {
     height: 100%;
     transition: background-color 250ms, color 250ms;
 }
 
-#navmenu li button {
-    border: none;
+.nav-btn {
+    --overlap: 1.2ch;
     font-size: 1.5rem;
-    width: 4ch;
-    margin-left: -1ch;
-    padding-right: 0.5rem;
+    width: calc(3ch + var(--overlap));
+    margin-left: calc(-0.5 * var(--overlap));
+    padding-right: 0.8rem;
     background: transparent;
-    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
     border-radius: 100vh 0 0 100vh;
     cursor: pointer;
     color: inherit;
+    box-shadow: none;
+    border: none;
 }
 
-#navmenu li a:hover,
-#navmenu li button:hover,
-#navmenu li a:focus,
-#navmenu li button:focus {
+.navmenu li a:hover,
+.nav-btn:hover,
+.navmenu li a:focus,
+.nav-btn:focus {
     background-color: var(--white-2);
     z-index: 2;
     outline: none;
@@ -283,31 +296,43 @@ p {
     color: #000;
 }
 
+.nav-btn.open {
+    box-shadow: 0 0 0.3rem 0.3rem rgba(0, 0, 0, 0.4) inset;
+    background-color: var(--white-3);
+}
+
+.nav-expand-sect {
+    list-style-type: square;
+    padding: 0;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 250ms;
+}
+
+.nav-expand-sect li a {
+    padding-left: 3rem;
+    border-radius: 0;
+}
+
 .activity-select-cards {
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
-    color: var(--white-2);
 }
 
 .activity-select-cards .card {
-    color: inherit;
     position: relative;
-    border: 0.2rem solid currentColor;
     border-radius: 1rem;
-    background-color: var(--white-1);
-    padding: 0.5rem 1rem 0.2rem 1rem;
+    padding: 0.5rem 1rem;
     flex-basis: 16rem;
     flex-grow: 1;
-    min-width: 15rem;
-    box-shadow: 0 0 0.5rem currentColor;
+    min-width: 16rem;
     text-align: left;
-    transition: color 350ms;
     display: flex;
     flex-direction: column;
 }
 
-.activity-select-cards .card h1::after {
+.activity-select-cards .card::after {
     --border-width: 0.3rem;
     --btn-height: 3.5rem;
     content: "\276F";
@@ -315,7 +340,7 @@ p {
     font-size: 3rem;
     top: 0.5rem;
     right: 0.5rem;
-    display: inline-flex;
+    display: flex;
     padding: 0.4ch 0.4ch 0.5ch 0.5ch;
     height: calc(var(--btn-height) - 2 * var(--border-width) - 0.9ch);
     width: calc(var(--btn-height) - 2 * var(--border-width) - 0.9ch);
@@ -326,15 +351,15 @@ p {
     border: var(--border-width) solid currentColor;
 }
 
-.activity-select-cards .card:hover,
-.activity-select-cards .card:focus {
-    color: var(--hne-blue);
-    outline: none;
-}
-
-@media (orientation: portrait) and (max-width: 500px) {
+@media (orientation: portrait) and (max-width: 550px) {
     html {
         font-size: 13px;
+    }
+}
+
+@media (orientation: portrait) and (max-width: 450px) {
+    html {
+        font-size: 11.5px;
     }
 }
 

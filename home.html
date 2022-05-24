@@ -19,11 +19,40 @@
 
 
     <main>
-        <ul id="navmenu" class="collapsable">
-            <li><a href="">Home</a><button onclick="close_popup('#navmenu');">&#10006;</button></li>
-            <li class="droppable"><a href="home.html">IPM</a><button>&#9660;</button></li>
-            <li class="droppable"><a href="">PCA</a><button>&#9660;</button></li>
-            <li class="droppable"><a href="">Sound Deletion</a><button>&#9660;</button></li>
+        <ul id="navmenu" class="navmenu collapsable">
+            <li><a href="">Home</a><button class="nav-btn" onclick="close_popup('#navmenu');">&#10006;</button>
+            </li>
+            <li><a href="home.html">IPM</a><button class="nav-btn nav-expand-btn">&#9660;</button></li>
+            <ul class="nav-expand-sect">
+                <li><a href="">Set 1</a></li>
+                <li><a href="">Set 2</a></li>
+                <li><a href="">Set 3</a></li>
+                <li><a href="">Set 4</a></li>
+                <li><a href="">Set 5</a></li>
+            </ul>
+            <li><a href="">PCA</a><button class="nav-btn nav-expand-btn">&#9660;</button></li>
+            <ul class="nav-expand-sect">
+                <li><a href="">Set 1</a></li>
+                <li><a href="">Set 2</a></li>
+                <li><a href="">Set 3</a></li>
+                <li><a href="">Set 4</a></li>
+                <li><a href="">Set 5</a></li>
+            </ul>
+            <li><a href="">Sound Deletion</a><button class="nav-btn nav-expand-btn">&#9660;</button>
+            </li>
+            <ul class="nav-expand-sect">
+                <li><a href="">Set 1</a></li>
+                <li><a href="">Set 2</a></li>
+                <li><a href="">Set 3</a></li>
+                <li><a href="">Set 4</a></li>
+                <li><a href="">Set 5</a></li>
+            </ul>
+            <li><a href="">Results</a><button class="nav-btn nav-expand-btn">&#9660;</button>
+            </li>
+            <ul class="nav-expand-sect">
+                <li><a href="">All Tests</a></li>
+                <li><a href="">Recent Tests</a></li>
+            </ul>
         </ul>
 
         <div class="heading">
@@ -54,9 +83,12 @@
         </div>
         <div class="cmd-pallate">
             <div class="clinician-info">
-                <button id="clinician-info-button">i</button>
-                <label for="clinician-info-button">Informa<wbr>tion for<br>Clini<wbr>cians</label>
+                <button id="clinician-info-btn">i</button>
+                <label for="clinician-info-btn">Informa<wbr>tion for<br>Clini<wbr>cians</label>
             </div>
+            <button class="see-results-btn">
+                <p>See my results</p>
+            </button>
         </div>
     </main>
     <script type="text/javascript" src="js/master.js"></script>
