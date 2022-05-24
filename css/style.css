@@ -48,7 +48,7 @@ main {
     gap: 2rem;
 }
 
-main > *:nth-last-of-type(2) {
+.content {
     flex-grow: 1;
 }
 
@@ -110,7 +110,7 @@ button:hover {
     gap: 1rem;
 }
 
-.cmd-pallate {
+.cmd-palatte {
     --pallate-height: 6rem;
     display: flex;
     margin: 1rem 0;
@@ -306,12 +306,13 @@ button:hover {
     padding: 0;
     overflow: hidden;
     max-height: 0;
-    transition: max-height 250ms;
+    transition: max-height 500ms;
 }
 
 .nav-expand-sect li a {
     padding-left: 3rem;
     border-radius: 0;
+    font-size: 0.8em;
 }
 
 .activity-select-cards {
