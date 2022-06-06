@@ -68,7 +68,7 @@ p {
     font-size: 1.2rem;
 }
 
-button,
+.grey-btn,
 .card {
     background-color: var(--white-1);
     color: var(--white-2);
@@ -77,8 +77,8 @@ button,
     transition: box-shadow 250ms, color 250ms, -webkit-box-shadow 250ms;
 }
 
-button:focus,
-button:hover,
+.grey-btn:focus,
+.grey-btn:hover,
 .card:hover,
 .card:focus {
     outline: none;
@@ -113,11 +113,11 @@ button:hover,
     gap: 0.5rem;
     flex-wrap: wrap;
     align-items: flex-end;
-    margin-bottom: 2em;
+    /* margin-bottom: 2em; */
 }
 
 .cmd-palatte {
-    --pallate-height: 5rem;
+    --pallate-height: 6rem;
     display: flex;
     margin: 1rem 0;
     flex-wrap: wrap;
@@ -157,7 +157,7 @@ button:hover,
     justify-content: flex-end;
     align-items: center;
     min-width: 16rem;
-    height: 6rem;
+    height: var(--pallate-height);
     padding-right: 2rem;
     font-size: 3.8em;
     border-radius: 100vh;
@@ -212,6 +212,8 @@ button:hover,
     position: relative;
     color: var(--white-2);
     transition: color 250ms;
+    background: transparent;
+    border: none;
 }
 
 .three-lines span {
@@ -379,6 +381,7 @@ button:hover,
     gap: 1em;
     flex-wrap: wrap;
     flex-grow: 1;
+    flex-basis: 30em;
 }
 
 .set-card .three-lines {
@@ -394,6 +397,39 @@ button:hover,
 
 .set-card .details {
     font-size: 1rem;
+    display: none;
+    max-width: 0em;
+    overflow: hidden;
+    transition: max-width 300ms linear;
+    margin: 0;
+}
+
+.set-card .details.open {
+    transition: max-width 350ms;
+}
+
+.set-card .inner {
+    width: 12em;
+}
+
+.start-page {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.start-btn {
+    font-size: 4rem;
+    padding: 2rem 5rem;
+    border-radius: 3rem;
+    margin: 1rem;
+}
+
+.start-page .details {
+    text-align: center;
 }
 
 @media (max-width: 800px) {

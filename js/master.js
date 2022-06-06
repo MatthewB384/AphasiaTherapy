@@ -25,17 +25,27 @@ function close_navmenu() {
 }
 document.open_navmenu = open_navmenu;
 document.close_navmenu = close_navmenu;
+function open_navmenu_sect(btn) {
+    let panel = btn.parentNode.nextElementSibling;
+    panel.style.maxHeight = panel.scrollHeight + "px";
+    panel.classList.add("open");
+    btn.classList.add("open");
+    btn.innerHTML = "&#x25B2";
+}
+function close_navmenu_sect(btn) {
+    let panel = btn.parentNode.nextElementSibling;
+    btn.blur();
+    panel.style.maxHeight = 0;
+    btn.classList.remove("open");
+    panel.classList.remove("open");
+    btn.innerHTML = "&#9660";
+}
 function toggle_navmenu_sect(btn) {
     let panel = btn.parentNode.nextElementSibling;
-    if (panel.classList.toggle("open")) {
-        panel.style.maxHeight = panel.scrollHeight + "px";
-        btn.classList.add("open");
-        btn.innerHTML = "&#x25B2";
+    if (panel.classList.contains("open")) {
+        close_navmenu_sect(btn);
     } else {
-        btn.blur();
-        panel.style.maxHeight = 0;
-        btn.classList.remove("open");
-        btn.innerHTML = "&#9660";
+        open_navmenu_sect(btn);
     }
 }
 export function makeNavMenu() {
@@ -48,9 +58,9 @@ export function makeNavMenu() {
         <button class="nav-btn" onclick="close_navmenu();">&#10006;</button>
     </li>`; //home button and close navmenu x button;
 
-    for (const [key, activity] of Object.entries(activities)) {
+    for (const [act_key, activity] of Object.entries(activities)) {
         let activity_btn = document.createElement("li");
-        let link = `activity.html?activity=${encodeURIComponent(key)}`;
+        let link = `activity.html?activity=${encodeURIComponent(act_key)}`;
         activity_btn.innerHTML = `<a href=${link}>${activity.abbr}</a>`;
         navmenu.appendChild(activity_btn);
 
@@ -63,11 +73,12 @@ export function makeNavMenu() {
 
             let expand = document.createElement("ul");
             expand.classList.add("nav-expand-sect");
-            for (const set of activity.sets) {
+            expand.addEventListener("focusin", () =>
+                open_navmenu_sect(drop_btn)
+            );
+            for (const [set_key, set] of Object.entries(activity.sets)) {
                 let set_btn = document.createElement("li");
-                set_btn.innerHTML = `<a href="set.html?set=${encodeURIComponent(
-                    set.name
-                )}">${set.name}</a>`;
+                set_btn.innerHTML = `<a href="set.html?activity=${act_key}&set=${set_key}">${set.name}</a>`;
                 expand.appendChild(set_btn);
             }
             navmenu.appendChild(expand);
@@ -77,7 +88,7 @@ export function makeNavMenu() {
     document.addEventListener("click", (event) => {
         if (
             event.target.closest(".navmenu") == null &&
-            event.target.closest(".nonavclose") == null
+            event.target.closest(".no-nav-close") == null
         )
             close_navmenu();
     });
@@ -98,11 +109,11 @@ export function makeCMDPalatte() {
     cmdPalatte.classList.add("cmd-palatte");
     cmdPalatte.innerHTML = `
 <div class="clinician-info">
-    <button id="clinician-info-btn">i</button>
+    <button id="clinician-info-btn" class="grey-btn">i</button>
     <label for="clinician-info-btn">Informa<wbr>tion for<br>Clini<wbr>cians</label>
 </div>
-<button class="see-results-btn">
-    <p>See my results</p>
+<button class="see-results-btn grey-btn">
+    <p>See all results</p>
 </button>`;
     main.appendChild(cmdPalatte);
 }
@@ -111,12 +122,64 @@ export function makeHeadingBar(title = "", subtitle = "") {
     const heading = document.createElement("div");
     heading.classList.add("heading");
     heading.innerHTML = `
-<div class="three-lines nonavclose" onclick="open_navmenu();" tabindex="0">
+<button class="three-lines no-nav-close" onclick="open_navmenu();" tabindex="0">
     <span></span>
     <span></span>
     <span></span>
-</div>
+</button>
 <h1>${title}</h1>
 <h2>${subtitle}</h2>`;
     main.insertBefore(heading, main.firstChild);
 }
+
+export function formatTime(time) {
+    return new Date(time).toJSON().slice(0, 10).split("-").reverse().join("/");
+}
+
+export function getRecentResult(activity_id, set_id) {
+    const relevantResults = results.filter(
+        (r) => r.activity_id == activity_id && r.set_id == set_id
+    );
+    if (relevantResults.length > 0) {
+        return relevantResults.reduce((a, b) => (a.time > b.time ? a : b));
+    } else {
+        return null;
+    }
+}
+
+class QuestionResult {
+    constructor(questionid, chosen_answer) {
+        this.questionid = questionid;
+        this.chosen_answer = chosen_answer; //correct answer is always number 3
+    }
+}
+
+class Result {
+    constructor(time, activity_id, set_id, results) {
+        this.time = time; // as int
+        this.activity_id = activity_id; //fk
+        this.set_id = set_id; //fk
+        this.results = results; //list of questionresult,
+    }
+}
+
+export const results = [
+    new Result(1654511906491, "ipa", "1", [
+        new QuestionResult("0", "0"),
+        new QuestionResult("1", "3"),
+        new QuestionResult("2", "2"),
+        new QuestionResult("3", "3"),
+    ]),
+    new Result(1654511906491, "ipa", "1", [
+        new QuestionResult("7", "3"),
+        new QuestionResult("2", "1"),
+        new QuestionResult("3", "3"),
+        new QuestionResult("1", "0"),
+    ]),
+    new Result(1654512696167, "pca", "0", [
+        new QuestionResult("0", "3"),
+        new QuestionResult("1", "0"),
+        new QuestionResult("2", "1"),
+        new QuestionResult("3", "0"),
+    ]),
+];
