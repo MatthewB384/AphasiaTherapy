@@ -18,10 +18,14 @@ function showDetails(threelines) {
     let panel = threelines.nextElementSibling;
     if (panel.classList.toggle("open")) {
         panel.style.display = "block";
-        setTimeout(() => (panel.style.maxWidth = "13rem"), 5);
+        setTimeout(() => {
+            panel.style.maxWidth = "13rem";
+            panel.style.maxHeight = panel.scrollHeight + "px";
+        }, 5);
     } else {
         panel.style.maxWidth = "0rem";
-        setTimeout(() => (panel.style.display = "none"), 300);
+        panel.style.maxHeight = "0rem";
+        setTimeout(() => (panel.style.display = "none"), 180);
     }
 }
 document.showDetails = showDetails;
@@ -47,7 +51,7 @@ function makeSetCards() {
             This activity has not been completed yet`;
         }
         card.innerHTML = `
-        <a href="set.html?activity=${params.activity}&set=${key}" class="card">${set.name}</a>
+        <a href="set.html?activity=${params.activity}&set=${key}" class="card">${set.name}<div class="arrow"></div></a>
         <button class="three-lines" onclick=showDetails(this) tabindex="0">
             <span></span><span></span><span></span>
         </button>

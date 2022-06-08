@@ -14,7 +14,7 @@ function makeActivityCards() {
         let card = document.createElement("a");
         card.classList.add("card");
         card.href = `activity.html?activity=${encodeURIComponent(key)}`;
-        card.innerHTML = `<div><h1>${activity.abbr}</h1><p>${activity.name}</p></div>`;
+        card.innerHTML = `<div><h1>${activity.abbr}</h1><p>${activity.name}</p></div><div class="arrow"></div>`;
         console.log(card);
         cards.appendChild(card);
     }

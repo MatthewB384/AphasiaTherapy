@@ -19,6 +19,11 @@
     }
 }
 
+@keyframes fadein {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
 html,
 body {
     --bg-col-border: calc(3vh + 2vw);
@@ -66,6 +71,15 @@ h2 {
 
 p {
     font-size: 1.2rem;
+}
+
+.fading {
+    transition: opacity 0.5s linear;
+    opacity: 0;
+}
+
+.fadein {
+    animation: fadein 0.5s linear;
 }
 
 .grey-btn,
@@ -152,6 +166,7 @@ p {
 }
 
 .welcome-start-btn {
+    text-decoration: none;
     position: relative;
     display: flex;
     justify-content: flex-end;
@@ -176,29 +191,51 @@ p {
 
 .welcome-start-btn a {
     color: inherit;
-    text-decoration: none;
 }
 
 .welcome-start-btn a:focus {
     outline: none;
 }
 
-.welcome-start-btn::after {
-    --border-width: 0.7rem;
-    content: "\276F";
-    display: inline-flex;
-    position: absolute;
-    left: 0;
-    top: 0;
-    padding: 0 0 0.4rem 0.4rem;
-    height: calc(var(--pallate-height) - 2 * var(--border-width) - 0.4rem);
-    width: calc(var(--pallate-height) - 2 * var(--border-width) - 0.4rem);
-    font-weight: 900;
-    align-items: center;
-    justify-content: center;
+.arrow {
+    --border-width: 0.5rem;
+    --size: 5em;
     border-radius: 100vh;
     border: var(--border-width) solid currentColor;
-    box-shadow: 0 0 0.15rem 0.15rem rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 0.15rem 0rem currentColor;
+    height: var(--size);
+    width: var(--size);
+    position: absolute;
+}
+
+.arrow::before,
+.arrow::after {
+    content: "";
+    background: currentColor;
+    --width: calc(var(--size) / 2);
+    --height: calc(var(--size) / 7);
+    --angle: 45deg;
+    width: var(--width);
+    height: var(--height);
+    border-radius: 100vh;
+    top: calc(50% - var(--height) / 2);
+    left: calc(50% - var(--width) / 2);
+    transform-origin: calc(100% - var(--height) / 2) 50%;
+    position: absolute;
+}
+
+.arrow::before {
+    transform: rotate(var(--angle));
+}
+
+.arrow::after {
+    transform: rotate(calc(-1 * var(--angle)));
+}
+
+.welcome-start-btn .arrow {
+    --border-width: 0.7rem;
+    --size: calc(var(--pallate-height) - 2 * var(--border-width));
+    left: 0;
 }
 
 .see-results-btn {
@@ -344,23 +381,11 @@ p {
     text-decoration: none;
 }
 
-.card::after {
-    --border-width: 0.3rem;
-    --btn-height: 3.5rem;
-    content: "\276F";
-    position: absolute;
-    font-size: 3rem;
-    top: 0.5rem;
-    right: 0.5rem;
-    display: flex;
-    padding: 0.35ch 0.4ch 0.55ch 0.5ch;
-    height: calc(var(--btn-height) - 2 * var(--border-width) - 0.9ch);
-    width: calc(var(--btn-height) - 2 * var(--border-width) - 0.9ch);
-    font-weight: 900;
-    align-items: center;
-    justify-content: center;
-    border-radius: 100vh;
-    border: var(--border-width) solid currentColor;
+.card .arrow {
+    --border-width: 0.2rem;
+    --size: 2rem;
+    right: 1rem;
+    top: 1rem;
 }
 
 .activity-select-cards .card {
@@ -381,7 +406,7 @@ p {
     gap: 1em;
     flex-wrap: wrap;
     flex-grow: 1;
-    flex-basis: 30em;
+    flex-basis: 32em;
 }
 
 .set-card .three-lines {
@@ -400,36 +425,130 @@ p {
     display: none;
     max-width: 0em;
     overflow: hidden;
-    transition: max-width 300ms linear;
+    transition: max-width 200ms, max-height 200ms cubic-bezier(1, 0, 1, 0);
     margin: 0;
 }
 
 .set-card .details.open {
-    transition: max-width 350ms;
+    transition: max-width 200ms;
+}
+
+@media (min-width: 280px) and (max-width: 650px) {
+    .set-card .details {
+        transition: max-height 200ms, max-width 200ms cubic-bezier(1, 0, 1, 0);
+    }
+    .set-card .details.open {
+        transition: max-height 200ms;
+        background: green;
+    }
 }
 
 .set-card .inner {
     width: 12em;
 }
 
-.start-page {
+.activity {
     height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    text-align: center;
 }
 
 .start-btn {
     font-size: 4rem;
     padding: 2rem 5rem;
-    border-radius: 3rem;
+    border-radius: 1rem;
     margin: 1rem;
 }
 
-.start-page .details {
-    text-align: center;
+.text-btn {
+    border: none;
+    background: transparent;
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.text-btn * {
+    transition: color 250ms, filter 250ms;
+}
+
+.text-btn img {
+    height: 3rem;
+}
+
+.text-btn:hover,
+.text-btn:focus {
+    outline: none;
+}
+
+.text-btn:hover *,
+.text-btn:focus * {
+    color: var(--hne-blue);
+    text-shadow: 0px 0px 0.1rem currentColor;
+}
+
+.text-btn:hover img,
+.text-btn:focus img {
+    filter: drop-shadow(0 0 0.2rem var(--hne-blue));
+}
+
+.sound-btn {
+    display: inline;
+    font-size: 3rem;
+}
+
+.answers {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.answers div {
+    justify-content: center;
+    gap: 2rem;
+    width: max-content;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.answers button {
+    border: none;
+    background: none;
+    padding: 0;
+    position: relative;
+}
+
+.answers button:hover,
+.answers button:focus {
+    outline: none;
+}
+
+.answers img {
+    width: 15rem;
+    border-radius: 1rem;
+    outline: 0.2em solid var(--white-2);
+    box-shadow: 0px 0px 0.8rem 0.2rem rgba(0, 0, 0, 0.3);
+    transition: box-shadow 200ms;
+}
+
+.answers button:hover img,
+.answers button:focus img {
+    outline: 0.2em solid var(--hne-blue);
+    box-shadow: 0px 0px 0.8rem 0.2rem var(--hne-blue);
+}
+
+.marking {
+    position: absolute;
+    left: 0;
+    opacity: 0.6;
 }
 
 @media (max-width: 800px) {
