@@ -11,6 +11,12 @@
     --white-2: rgb(var(--white-2-rgb));
     --white-3-rgb: 120, 120, 120;
     --white-3: rgb(var(--white-3-rgb));
+    --light-green-rgb: 131, 227, 79; /*#83e34f*/
+    --light-green: rgb(var(--light-green-rgb));
+    --mid-green-rgb: 64, 181, 2; /*#40b502*/
+    --mid-green: rgb(var(--mid-green-rgb));
+    --green-rgb: 29, 74, 4; /*#1d4a04*/
+    --green: rgb(var(--green-rgb));
 }
 
 @keyframes rotate {
@@ -20,8 +26,9 @@
 }
 
 @keyframes fadein {
-    from {opacity: 0;}
-    to {opacity: 1;}
+    from {
+        opacity: 0;
+    }
 }
 
 html,
@@ -74,12 +81,12 @@ p {
 }
 
 .fading {
-    transition: opacity 0.5s linear;
+    transition: opacity 0.4s linear;
     opacity: 0;
 }
 
 .fadein {
-    animation: fadein 0.5s linear;
+    animation: fadein 0.4s linear;
 }
 
 .grey-btn,
@@ -88,7 +95,7 @@ p {
     color: var(--white-2);
     box-shadow: 0 0 0.15rem 0.15rem rgba(var(--white-2-rgb), 0.4);
     border: 0.24rem solid currentColor;
-    transition: box-shadow 250ms, color 250ms, -webkit-box-shadow 250ms;
+    transition: box-shadow 250ms, color 250ms, -webkit-box-shadow 250ms, background-color 250ms;
 }
 
 .grey-btn:focus,
@@ -238,9 +245,15 @@ p {
     left: 0;
 }
 
-.see-results-btn {
-    padding: 0 1.5rem;
+.cmd-btn {
+    padding: 1rem;
+    font-size: 1.2rem;
     border-radius: 1rem;
+}
+
+.gap-1 {
+    display: flex;
+    gap: 1rem;
 }
 
 .three-lines {
@@ -468,10 +481,11 @@ p {
     border: none;
     background: transparent;
     margin-bottom: 3rem;
-    display: flex;
+    display: inline-flex;
     justify-content: center;
     align-items: center;
     gap: 1rem;
+
 }
 
 .text-btn * {
@@ -549,6 +563,18 @@ p {
     position: absolute;
     left: 0;
     opacity: 0.6;
+}
+
+.green {
+    background: var(--light-green);
+    color: var(--green)
+}
+
+.green:hover,
+.green:focus {
+    background: var(--mid-green);
+    color: black;
+    box-shadow: 0 0 0.15rem 0.15rem rgba(0,0,0, 0.4);
 }
 
 @media (max-width: 800px) {

@@ -112,8 +112,8 @@ export function makeCMDPalatte() {
     <button id="clinician-info-btn" class="grey-btn">i</button>
     <label for="clinician-info-btn">Informa<wbr>tion for<br>Clini<wbr>cians</label>
 </div>
-<button class="see-results-btn grey-btn">
-    <p>See all results</p>
+<button class="cmd-btn grey-btn">
+    See all results
 </button>`;
     main.appendChild(cmdPalatte);
 }
@@ -147,39 +147,16 @@ export function getRecentResult(activity_id, set_id) {
     }
 }
 
-class QuestionResult {
-    constructor(questionid, chosen_answer) {
-        this.questionid = questionid;
-        this.chosen_answer = chosen_answer; //correct answer is always number 3
-    }
-}
-
-class Result {
-    constructor(time, activity_id, set_id, results) {
+export class Result {
+    constructor(time, activity_id, set_id, score) {
         this.time = time; // as int
         this.activity_id = activity_id; //fk
         this.set_id = set_id; //fk
-        this.results = results; //list of questionresult,
+        this.score = score;
     }
 }
 
-export const results = [
-    new Result(1654511906491, "ipa", "1", [
-        new QuestionResult("0", "0"),
-        new QuestionResult("1", "3"),
-        new QuestionResult("2", "2"),
-        new QuestionResult("3", "3"),
-    ]),
-    new Result(1654511906491, "ipa", "1", [
-        new QuestionResult("7", "3"),
-        new QuestionResult("2", "1"),
-        new QuestionResult("3", "3"),
-        new QuestionResult("1", "0"),
-    ]),
-    new Result(1654512696167, "pca", "0", [
-        new QuestionResult("0", "3"),
-        new QuestionResult("1", "0"),
-        new QuestionResult("2", "1"),
-        new QuestionResult("3", "0"),
-    ]),
-];
+if (window.localStorage.getItem("results") == null) {
+    window.localStorage.setItem("results", JSON.stringify([]));
+}
+const results = JSON.parse(window.localStorage.getItem("results"));
