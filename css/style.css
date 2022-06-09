@@ -438,6 +438,7 @@ p {
     font-size: 1rem;
     display: none;
     max-width: 0em;
+    max-height: 0em;
     overflow: hidden;
     transition: max-width 200ms, max-height 200ms cubic-bezier(1, 0, 1, 0);
     margin: 0;
