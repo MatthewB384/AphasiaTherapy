@@ -701,7 +701,7 @@ let qs = {
     ]),
     t_6: new SWQ("Question 7", sds.swt, imgs.train, [
         imgs.lime,
-        imgs.lime,
+        imgs.lizard,
         imgs.donut,
     ]),
     t_7: new SWQ("Question 8", sds.swt, imgs.tree, [

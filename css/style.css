@@ -95,7 +95,8 @@ p {
     color: var(--white-2);
     box-shadow: 0 0 0.15rem 0.15rem rgba(var(--white-2-rgb), 0.4);
     border: 0.24rem solid currentColor;
-    transition: box-shadow 250ms, color 250ms, -webkit-box-shadow 250ms, background-color 250ms;
+    transition: box-shadow 250ms, color 250ms, -webkit-box-shadow 250ms,
+        background-color 250ms;
 }
 
 .grey-btn:focus,
@@ -452,7 +453,6 @@ p {
     }
     .set-card .details.open {
         transition: max-height 200ms;
-        background: green;
     }
 }
 
@@ -485,7 +485,6 @@ p {
     justify-content: center;
     align-items: center;
     gap: 1rem;
-
 }
 
 .text-btn * {
@@ -567,14 +566,14 @@ p {
 
 .green {
     background: var(--light-green);
-    color: var(--green)
+    color: var(--green);
 }
 
 .green:hover,
 .green:focus {
     background: var(--mid-green);
     color: black;
-    box-shadow: 0 0 0.15rem 0.15rem rgba(0,0,0, 0.4);
+    box-shadow: 0 0 0.15rem 0.15rem rgba(0, 0, 0, 0.4);
 }
 
 @media (max-width: 800px) {
