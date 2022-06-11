@@ -15,8 +15,11 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
 });
 const activity = activities[params.activity];
 const set = activity.sets[params.set];
+let startLock = false;
 let clickLock = false;
+let contLock = false;
 let score = 0;
+const playingsounds = [];
 
 function makeHomePage() {
     const wrapper = document.createElement("div");
@@ -33,10 +36,6 @@ function makeHomePage() {
     }`;
     wrapper.children[0].onclick = () => start();
     document.querySelector(".content").appendChild(wrapper);
-}
-
-function sleep(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 function shuffle(array) {
@@ -75,6 +74,7 @@ function makeQuestion(question_id) {
     let wrap = document.createElement("div");
     for (const prompt of shuffledPrompts) {
         let btn = document.createElement("button");
+        btn.classList.add("answer");
         btn.innerHTML = `<img src="${"../" + prompt}" alt="${
             prompt.split("/").reverse()[0].split(".")[0]
         }"'></img>`;
@@ -87,13 +87,20 @@ function makeQuestion(question_id) {
             wrap = document.createElement("div");
         }
     }
+
     activity.appendChild(answers);
     document.querySelector(`.content`).appendChild(activity);
     playSound(question);
 }
 
 function playSound(question) {
-    new Audio("../" + question.soundfile).play();
+    let sound = new Audio("../" + question.soundfile);
+    sound.play();
+    for (const sd of playingsounds) {
+        sd.pause();
+    }
+    playingsounds.length = 0;
+    playingsounds.push(sound);
 }
 
 async function answer(elem, question_id) {
@@ -122,14 +129,17 @@ async function answer(elem, question_id) {
     } else {
         score += 1;
     }
-    await sleep(2000);
-    await clearPage();
-    clickLock = false;
-    if (question_id + 1 < set.qs.length) {
-        makeQuestion(question_id + 1);
-    } else {
-        finish();
-    }
+    const continueBtn = document.createElement("button");
+    continueBtn.classList.add(
+        "grey-btn",
+        "cmd-btn",
+        "green",
+        "continue-btn",
+        "fadein"
+    );
+    continueBtn.innerHTML = `<h1>Continue</h1> <div class="arrow"></div>`;
+    continueBtn.onclick = () => cont(question_id + 1);
+    document.querySelector(`.content`).appendChild(continueBtn);
 }
 
 function clearPage() {
@@ -141,9 +151,29 @@ function clearPage() {
 }
 
 async function start() {
-    let score = 0;
+    if (startLock) {
+        return;
+    }
+    startLock = true;
+    score = 0;
     await clearPage();
     makeQuestion(0);
+    startLock = false;
+}
+
+async function cont(question_id) {
+    if (contLock) {
+        return;
+    }
+    contLock = true;
+    await clearPage();
+    clickLock = false;
+    if (question_id < set.qs.length) {
+        makeQuestion(question_id);
+    } else {
+        finish();
+    }
+    contLock = false;
 }
 
 function makeResultsPage() {
@@ -174,5 +204,4 @@ function finish() {
 makeHomePage();
 makeNavMenu();
 makeRainbowBG();
-makeCMDPalatte();
 makeHeadingBar(set.name, activity.name);

@@ -81,7 +81,7 @@ p {
 }
 
 .fading {
-    transition: opacity 0.4s linear;
+    transition: opacity 0.4s linear !important;
     opacity: 0;
 }
 
@@ -94,7 +94,7 @@ p {
     background-color: var(--white-1);
     color: var(--white-2);
     box-shadow: 0 0 0.15rem 0.15rem rgba(var(--white-2-rgb), 0.4);
-    border: 0.24rem solid currentColor;
+    border: 0.2rem solid currentColor;
     transition: box-shadow 250ms, color 250ms, -webkit-box-shadow 250ms,
         background-color 250ms;
 }
@@ -135,7 +135,6 @@ p {
     gap: 0.5rem;
     flex-wrap: wrap;
     align-items: flex-end;
-    /* margin-bottom: 2em; */
 }
 
 .cmd-palatte {
@@ -154,7 +153,7 @@ p {
 
 .clinician-info button {
     height: var(--pallate-height);
-    width: var(--pallate-height);
+    aspect-ratio: 1 / 1;
     font-size: 4em;
     border-radius: 100vh;
     font-weight: 700;
@@ -481,11 +480,11 @@ p {
 .text-btn {
     border: none;
     background: transparent;
-    margin-bottom: 3rem;
-    display: inline-flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     gap: 1rem;
+    font-size: 1em;
 }
 
 .text-btn * {
@@ -504,17 +503,12 @@ p {
 .text-btn:hover *,
 .text-btn:focus * {
     color: var(--hne-blue);
-    text-shadow: 0px 0px 0.1rem currentColor;
+    text-shadow: 0 0 0.1rem currentColor;
 }
 
 .text-btn:hover img,
 .text-btn:focus img {
     filter: drop-shadow(0 0 0.2rem var(--hne-blue));
-}
-
-.sound-btn {
-    display: inline;
-    font-size: 3rem;
 }
 
 .answers {
@@ -523,6 +517,7 @@ p {
     justify-content: center;
     gap: 2rem;
     flex-wrap: wrap;
+    margin: 2rem 0;
 }
 
 .answers div {
@@ -533,7 +528,7 @@ p {
     flex-wrap: wrap;
 }
 
-.answers button {
+.answers .answer {
     border: none;
     background: none;
     padding: 0;
@@ -549,14 +544,14 @@ p {
     width: 15rem;
     border-radius: 1rem;
     outline: 0.2em solid var(--white-2);
-    box-shadow: 0px 0px 0.8rem 0.2rem rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 0.8rem 0.2rem rgba(0, 0, 0, 0.3);
     transition: box-shadow 200ms;
 }
 
 .answers button:hover img,
 .answers button:focus img {
     outline: 0.2em solid var(--hne-blue);
-    box-shadow: 0px 0px 0.8rem 0.2rem var(--hne-blue);
+    box-shadow: 0 0 0.8rem 0.2rem var(--hne-blue);
 }
 
 .marking {
@@ -575,6 +570,20 @@ p {
     background: var(--mid-green);
     color: black;
     box-shadow: 0 0 0.15rem 0.15rem rgba(0, 0, 0, 0.4);
+}
+
+.continue-btn {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    padding-right: 5rem;
+}
+
+.continue-btn .arrow {
+    --border-width: 0.2rem;
+    --size: 3rem;
+    right: 1rem;
+    top: 1rem;
 }
 
 @media (max-width: 800px) {

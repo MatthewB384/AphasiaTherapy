@@ -18,7 +18,7 @@ let p = "images/image prompts/",
         cat: p + "cat.jpg",
         cloud: p + "cloud.jpg",
         coffee: p + "coffee.jpg",
-        cookie: p + "cookie.jpg",
+        crab: p + "crab.jpg", //update
         crayon: p + "crayon.jpg",
         dice: p + "dice.jpg",
         dinosaur: p + "dinosaur.jpg",
@@ -40,7 +40,7 @@ let p = "images/image prompts/",
         fork: p + "fork.jpg",
         fox: p + "fox.jpg",
         frog: p + "frog.jpg",
-        giraffe: p + "giraffe.jpg",
+        ghost: p + "ghost.jpg", //update
         girl: p + "girl.jpg",
         glasses: p + "glasses.jpg",
         goat: p + "goat.jpg",
@@ -95,7 +95,7 @@ let p = "images/image prompts/",
         sheep: p + "sheep.jpg",
         sheep2: p + "sheep2.jpg",
         shells: p + "shells.jpg",
-        ship: p + "ship.jpg",
+        chandelier: p + "chandelier.jpg", //chandelier update
         shoe: p + "shoe.jpg",
         shoes: p + "shoes.jpg",
         shovel: p + "shovel.jpg",
@@ -170,7 +170,7 @@ class SWQ extends Question {
 }
 let qs = {
     b_0: new SWQ("Question 1", sds.swb, imgs.baby, [
-        imgs.cookie,
+        imgs.crab,
         imgs.tea,
         imgs.whale,
     ]),
@@ -202,7 +202,7 @@ let qs = {
     b_6: new SWQ("Question 7", sds.swb, imgs.boat, [
         imgs.shells,
         imgs.gorilla,
-        imgs.giraffe,
+        imgs.ghost,
     ]),
     b_7: new SWQ("Question 8", sds.swb, imgs.bowl, [
         imgs.flag,
@@ -259,13 +259,13 @@ let qs = {
         imgs.horse,
         imgs.hippo,
     ]),
-    c_8: new SWQ("Question 9", sds.swc, imgs.cookie, [
+    c_8: new SWQ("Question 9", sds.swc, imgs.crab, [
         imgs.whale,
         imgs.feet,
         imgs.door,
     ]),
     c_9: new SWQ("Question 10", sds.swc, imgs.crayon, [
-        imgs.ship,
+        imgs.chandelier,
         imgs.shoes,
         imgs.banana,
     ]),
@@ -281,7 +281,7 @@ let qs = {
     ]),
     d_2: new SWQ("Question 3", sds.swd, imgs.doctor, [
         imgs.helicopter,
-        imgs.cookie,
+        imgs.crab,
         imgs.shoe,
     ]),
     d_3: new SWQ("Question 4", sds.swd, imgs.dog, [
@@ -369,7 +369,7 @@ let qs = {
         imgs.monkey,
         imgs.plant,
     ]),
-    g_0: new SWQ("Question 1", sds.swg, imgs.giraffe, [
+    g_0: new SWQ("Question 1", sds.swg, imgs.ghost, [
         imgs.volcano,
         imgs.bird,
         imgs.water,
@@ -412,7 +412,7 @@ let qs = {
     g_8: new SWQ("Question 9", sds.swg, imgs.grass, [
         imgs.ladybug,
         imgs.shells,
-        imgs.cookie,
+        imgs.crab,
     ]),
     g_9: new SWQ("Question 10", sds.swg, imgs.guitar, [
         imgs.plant,
@@ -467,7 +467,7 @@ let qs = {
     h_9: new SWQ("Question 10", sds.swh, imgs.house, [
         imgs.television,
         imgs.pencil,
-        imgs.ship,
+        imgs.chandelier,
     ]),
     l_0: new SWQ("Question 1", sds.swl, imgs.ladder, [
         imgs.feet,
@@ -536,7 +536,7 @@ let qs = {
     ]),
     m_3: new SWQ("Question 4", sds.swm, imgs.meerkat, [
         imgs.pen,
-        imgs.giraffe,
+        imgs.ghost,
         imgs.lizard,
     ]),
     m_4: new SWQ("Question 5", sds.swm, imgs.microwave, [
@@ -550,7 +550,7 @@ let qs = {
         imgs.ladybug,
     ]),
     m_6: new SWQ("Question 7", sds.swm, imgs.money, [
-        imgs.cookie,
+        imgs.crab,
         imgs.glasses,
         imgs.pizza,
     ]),
@@ -567,7 +567,7 @@ let qs = {
     m_9: new SWQ("Question 10", sds.swm, imgs.mushroom, [
         imgs.door,
         imgs.camel,
-        imgs.ship,
+        imgs.chandelier,
     ]),
     p_0: new SWQ("Question 1", sds.swp, imgs.paint, [
         imgs.burger,
@@ -576,7 +576,7 @@ let qs = {
     ]),
     p_1: new SWQ("Question 2", sds.swp, imgs.pelican, [
         imgs.harp,
-        imgs.cookie,
+        imgs.crab,
         imgs.guitar,
     ]),
     p_2: new SWQ("Question 3", sds.swp, imgs.pen, [
@@ -620,8 +620,8 @@ let qs = {
         imgs.typewriter,
     ]),
     sh_0: new SWQ("Question 1", sds.swsh, imgs.shadow, [
-        imgs.shovel,
-        imgs.giraffe,
+        imgs.dolphin,
+        imgs.carrot,
         imgs.waffle,
     ]),
     sh_1: new SWQ("Question 2", sds.swsh, imgs.shark, [
@@ -634,27 +634,27 @@ let qs = {
         imgs.duck,
         imgs.popcorn,
     ]),
-    sh_3: new SWQ("Question 7", sds.swsh, imgs.shoe, [
+    sh_3: new SWQ("Question 4", sds.swsh, imgs.shoe, [
         imgs.lantern,
         imgs.vegebles,
         imgs.penguin,
     ]),
     sh_4: new SWQ("Question 5", sds.swsh, imgs.shells, [
         imgs.cloud,
-        imgs.cookie,
+        imgs.crab,
         imgs.crayon,
     ]),
-    sh_5: new SWQ("Question 6", sds.swsh, imgs.ship, [
+    sh_5: new SWQ("Question 6", sds.swsh, imgs.chandelier, [
         imgs.dog,
         imgs.crayon,
         imgs.horse,
     ]),
-    sh_6: new SWQ("Question 4", sds.swsh, imgs.sheep2, [
+    sh_6: new SWQ("Question 7", sds.swsh, imgs.sheep2, [
         imgs.feet,
         imgs.wolf,
         imgs.monkey,
     ]),
-    sh_7: new SWQ("Question 10", sds.swsh, imgs.shower, [
+    sh_7: new SWQ("Question 8", sds.swsh, imgs.shower, [
         imgs.drums,
         imgs.vase,
         imgs.paint,
@@ -664,7 +664,7 @@ let qs = {
         imgs.turtle,
         imgs.massage,
     ]),
-    sh_9: new SWQ("Question 8", sds.swsh, imgs.shoes, [
+    sh_9: new SWQ("Question 10", sds.swsh, imgs.shoes, [
         imgs.grapes,
         imgs.leopard,
         imgs.pineapple,
@@ -781,7 +781,7 @@ let qs = {
     ]),
     w_2: new SWQ("Question 3", sds.sww, imgs.walrus, [
         imgs.lemon,
-        imgs.ship,
+        imgs.chandelier,
         imgs.donkey,
     ]),
     w_3: new SWQ("Question 4", sds.sww, imgs.watch, [
@@ -816,7 +816,7 @@ let qs = {
     ]),
     w_9: new SWQ("Question 10", sds.sww, imgs.wolf, [
         imgs.shovel,
-        imgs.giraffe,
+        imgs.ghost,
         imgs.frog,
     ]),
 };

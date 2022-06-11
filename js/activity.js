@@ -41,7 +41,7 @@ function makeSetCards() {
         if (recentResult !== null) {
             var details = `
             Last completed: ${formatTime(recentResult.time)}<br>
-            Last score: ${recentResult.score} / 10<br>
+            Last score: ${recentResult.score}/${set.qs.length}<br>
             <a href="results.html">See Results</a>`;
         } else {
             var details = `

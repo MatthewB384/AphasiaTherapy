@@ -86,11 +86,7 @@ export function makeNavMenu() {
     }
     main.appendChild(navmenu);
     document.addEventListener("click", (event) => {
-        if (
-            event.target.closest(".navmenu") == null &&
-            event.target.closest(".no-nav-close") == null
-        )
-            close_navmenu();
+        if (event.target.closest(".navmenu") == null) close_navmenu();
     });
     document.addEventListener("keyup", (event) => {
         if (event.key == "Escape") close_navmenu();
@@ -122,13 +118,17 @@ export function makeHeadingBar(title = "", subtitle = "") {
     const heading = document.createElement("div");
     heading.classList.add("heading");
     heading.innerHTML = `
-<button class="three-lines no-nav-close" onclick="open_navmenu();" tabindex="0">
+<button class="three-lines" tabindex="0">
     <span></span>
     <span></span>
     <span></span>
 </button>
 <h1>${title}</h1>
 <h2>${subtitle}</h2>`;
+    heading.children[0].onclick = (event) => {
+        open_navmenu();
+        event.stopPropagation();
+    };
     main.insertBefore(heading, main.firstChild);
 }
 
