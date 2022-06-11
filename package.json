@@ -1,0 +1,12 @@
+{
+    "name": "aphasia-therapy",
+    "version": "1.0.0",
+    "description": "A free online therapy tool for treating aphasia and apraxia",
+    "main": "index.js",
+    "scripts": {
+        "test": "test"
+    },
+    "author": "Matthew Banney",
+    "license": "ISC",
+    "type": "module"
+}
