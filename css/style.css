@@ -149,6 +149,7 @@ p {
 
 .clinician-info {
     display: flex;
+    text-decoration: none;
 }
 
 .clinician-info button {
@@ -183,9 +184,6 @@ p {
     padding-right: 2rem;
     font-size: 3.8em;
     border-radius: 100vh;
-    background-color: var(--hne-blue);
-    color: var(--white-1);
-    box-shadow: 0 0 0.15rem 0.15rem rgba(var(--hne-blue-rgb), 0.4);
     transition: color 250ms;
 }
 
@@ -560,15 +558,15 @@ p {
     opacity: 0.6;
 }
 
-.green {
-    background: var(--light-green);
-    color: var(--green);
+.blue {
+    background: var(--hne-blue);
+    color: var(--white-1);
+    box-shadow: 0 0 0.15rem 0.15rem rgba(var(--hne-blue-rgb), 0.4);
 }
 
-.green:hover,
-.green:focus {
-    background: var(--mid-green);
-    color: black;
+.blue:hover,
+.blue:focus {
+    color: var(--light-blue);
     box-shadow: 0 0 0.15rem 0.15rem rgba(0, 0, 0, 0.4);
 }
 

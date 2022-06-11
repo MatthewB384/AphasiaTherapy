@@ -25,7 +25,7 @@ function makeHomePage() {
     const wrapper = document.createElement("div");
     wrapper.classList.add("activity");
     let recentResult = getRecentResult(params.activity, params.set);
-    wrapper.innerHTML = `<button class="grey-btn start-btn">Start</button>${
+    wrapper.innerHTML = `<button class="grey-btn start-btn blue">Start</button>${
         recentResult !== null
             ? `
             <div class="details">
@@ -133,7 +133,7 @@ async function answer(elem, question_id) {
     continueBtn.classList.add(
         "grey-btn",
         "cmd-btn",
-        "green",
+        "blue",
         "continue-btn",
         "fadein"
     );
@@ -185,7 +185,7 @@ function makeResultsPage() {
     <div class="gap-1">
         <button class="grey-btn cmd-btn">Attempt again</button>
         <a href="activity.html?activity=${params.activity}">
-            <button class="grey-btn cmd-btn green"><b>Return Home</b></button>
+            <button class="grey-btn cmd-btn blue"><b>Return Home</b></button>
         </a>
     </div>`;
     activity.children[3].children[0].onclick = function () {

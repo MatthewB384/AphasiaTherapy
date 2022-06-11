@@ -104,10 +104,10 @@ export function makeCMDPalatte() {
     const cmdPalatte = document.createElement("div");
     cmdPalatte.classList.add("cmd-palatte");
     cmdPalatte.innerHTML = `
-<div class="clinician-info">
+<a href="clinician-info.html" class="clinician-info">
     <button id="clinician-info-btn" class="grey-btn">i</button>
     <label for="clinician-info-btn">Informa<wbr>tion for<br>Clini<wbr>cians</label>
-</div>
+</a>
 <button class="cmd-btn grey-btn">
     See all results
 </button>`;
