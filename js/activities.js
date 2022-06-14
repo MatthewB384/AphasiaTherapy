@@ -785,7 +785,7 @@ let qs = {
         imgs.donkey,
     ]),
     w_3: new SWQ("Question 4", sds.sww, imgs.watch, [
-        imgs.doctor,
+        imgs.shower,
         imgs.dog,
         imgs.cat,
     ]),
@@ -805,7 +805,7 @@ let qs = {
         imgs.shovel,
     ]),
     w_7: new SWQ("Question 8", sds.sww, imgs.wheat, [
-        imgs.doctor,
+        imgs.ladder,
         imgs.bowl,
         imgs.hand,
     ]),

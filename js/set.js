@@ -15,11 +15,22 @@ const params = new Proxy(new URLSearchParams(window.location.search), {
 });
 const activity = activities[params.activity];
 const set = activity.sets[params.set];
+
 let startLock = false;
 let clickLock = false;
 let contLock = false;
+
 let score = 0;
+
 const playingsounds = [];
+
+let shiftdown = false;
+document.addEventListener("keydown", (e) => {
+    if (e.key == "Shift") shiftdown = true;
+});
+document.addEventListener("keyup", (e) => {
+    if (e.key == "Shift") shiftdown = false;
+});
 
 function makeHomePage() {
     const wrapper = document.createElement("div");
@@ -157,7 +168,11 @@ async function start() {
     startLock = true;
     score = 0;
     await clearPage();
-    makeQuestion(0);
+
+    makeQuestion(shiftdown ? 9 : 0);
+    window.onbeforeunload = function () {
+        return "If you leave this page, all your progress on this set will be lost.";
+    };
     startLock = false;
 }
 
@@ -184,8 +199,8 @@ function makeResultsPage() {
     <h2>You scored ${score}/10</h2><br>
     <div class="gap-1">
         <button class="grey-btn cmd-btn">Attempt again</button>
-        <a href="activity.html?activity=${params.activity}">
-            <button class="grey-btn cmd-btn blue"><b>Return Home</b></button>
+        <a class="grey-btn cmd-btn blue" href="activity.html?activity=${params.activity}">
+           <b>Return Home</b>
         </a>
     </div>`;
     activity.children[3].children[0].onclick = function () {
@@ -196,6 +211,7 @@ function makeResultsPage() {
 
 function finish() {
     makeResultsPage();
+    window.onbeforeunload = null;
     let results = JSON.parse(window.localStorage.getItem("results"));
     results.push(new Result(Date.now(), params.activity, params.set, score));
     window.localStorage.setItem("results", JSON.stringify(results));
