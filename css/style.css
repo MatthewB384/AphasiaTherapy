@@ -572,14 +572,18 @@ p {
     background: none;
     padding: 0;
     position: relative;
+    outline: 1px dotted blue;
+    width: 15rem;
+    height: 15rem;
+    outline: 0.2em solid var(--white-2);
+    box-shadow: 0 0 0.8rem 0.2rem rgba(0, 0, 0, 0.3);
+    transition: box-shadow 200ms;
+    border-radius: 1rem;
+    background-size: cover;
 }
 
-.answers button:hover,
-.answers button:focus {
-    outline: none;
-}
-
-.answers img {
+.answer img {
+    top: 0;
     width: 15rem;
     border-radius: 1rem;
     outline: 0.2em solid var(--white-2);
@@ -587,8 +591,8 @@ p {
     transition: box-shadow 200ms;
 }
 
-.answers button:hover img,
-.answers button:focus img {
+.answers .answer:hover,
+.answers .answer:focus {
     outline: 0.2em solid var(--hne-blue);
     box-shadow: 0 0 0.8rem 0.2rem var(--hne-blue);
 }

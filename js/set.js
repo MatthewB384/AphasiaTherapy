@@ -86,9 +86,7 @@ function makeQuestion(question_id) {
     for (const prompt of shuffledPrompts) {
         let btn = document.createElement("button");
         btn.classList.add("answer");
-        btn.innerHTML = `<img src="${"../" + prompt}" alt="${
-            prompt.split("/").reverse()[0].split(".")[0]
-        }"'></img>`;
+        btn.style.backgroundImage = `url("../${prompt}"), url("../${prompt}.lowres")`;
         btn.onclick = function () {
             answer(this, question_id);
         };
@@ -124,7 +122,9 @@ async function answer(elem, question_id) {
         .map((e) => [...e.children])
         .flat(1);
     const correctOption = options.filter((c) =>
-        decodeURIComponent(c.children[0].src).includes(question.correctimage)
+        decodeURIComponent(c.style.backgroundImage).includes(
+            question.correctimage
+        )
     )[0];
     const correctImg = document.createElement("img");
     correctImg.classList.add("marking", "fadein");
@@ -167,6 +167,7 @@ async function start() {
     }
     startLock = true;
     score = 0;
+    8;
     await clearPage();
 
     makeQuestion(shiftdown ? 9 : 0);
