@@ -52,7 +52,6 @@ export function makeNavMenu() {
     const navmenu = document.createElement("ul");
     navmenu.classList.add("navmenu", "collapsable");
     navmenu.id = "navmenu";
-    //<button class="nav-btn" onclick="close_navmenu();">&#10006;</button>
 
     function addListItem(name, link) {
         let activity_btn = document.createElement("li");
@@ -123,21 +122,28 @@ export function makeRainbowBG() {
     main.appendChild(bgwrap);
 }
 
-export function makeCMDPalatte(clinicianInfo = true, seeResults = true) {
+export function makeCMDPalatte(
+    backBtn = true,
+    seeResults = true,
+    clinicianInfo = true
+) {
     const cmdPalatte = document.createElement("div");
     cmdPalatte.classList.add("cmd-palatte");
     cmdPalatte.innerHTML =
-        (clinicianInfo
-            ? `
-<a href="clinician-info.html" class="clinician-info">
-    <button id="clinician-info-btn" class="grey-btn" tabindex="-1">i</button>
-    <label for="clinician-info-btn">Informa<wbr>tion for<br>Clini<wbr>cians</label>
-</a>`
+        (backBtn
+            ? `<button onclick="history.back()" class="back-btn cmd-btn grey-btn">Back<div class="arrow"></div></button>`
             : ``) +
         (seeResults
             ? `
 <a href="results.html" class="cmd-btn grey-btn">
     See all results
+</a>`
+            : ``) +
+        (clinicianInfo
+            ? `
+<a href="clinician-info.html" class="clinician-info">
+    <button id="clinician-info-btn" class="grey-btn" tabindex="-1">i</button>
+    <label for="clinician-info-btn">Informa<wbr>tion for<br>Clini<wbr>cians</label>
 </a>`
             : ``);
     main.appendChild(cmdPalatte);
@@ -147,14 +153,14 @@ export function makeHeadingBar(title = "", subtitle = "") {
     const heading = document.createElement("div");
     heading.classList.add("heading");
     heading.innerHTML = `
-<button onclick="history.back()" class="back-btn cmd-btn grey-btn">Back<div class="arrow"></div></button><button class="three-lines" tabindex="0">
+<button class="three-lines" tabindex="0">
     <span></span>
     <span></span>
     <span></span>
 </button>
 <h1>${title}</h1>
 <h2>${subtitle}</h2>`;
-    heading.children[1].onclick = (event) => {
+    heading.children[0].onclick = (event) => {
         open_navmenu();
         event.stopPropagation();
     };
