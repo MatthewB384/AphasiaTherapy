@@ -1004,5 +1004,5 @@ export const activities = {
         sets.v,
         sets.w,
     ]),
-    pca: new Activity("Phonological Component Analysis", "PCA", [sets.b]),
+    pca: new Activity("More activities will be added soon", "Coming Soon", []),
 };

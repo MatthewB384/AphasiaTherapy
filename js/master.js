@@ -52,36 +52,59 @@ export function makeNavMenu() {
     const navmenu = document.createElement("ul");
     navmenu.classList.add("navmenu", "collapsable");
     navmenu.id = "navmenu";
-    navmenu.innerHTML = `
-    <li>
-        <a href="home.html">Home</a>
-        <button class="nav-btn" onclick="close_navmenu();">&#10006;</button>
-    </li>`; //home button and close navmenu x button;
+    //<button class="nav-btn" onclick="close_navmenu();">&#10006;</button>
+
+    function addListItem(name, link) {
+        let activity_btn = document.createElement("li");
+        activity_btn.innerHTML = `<a href=${link}>${name}</a>`; //activity.abbr
+        navmenu.appendChild(activity_btn);
+        return activity_btn;
+    }
+
+    function addDropSection(parent) {
+        let drop_btn = document.createElement("button");
+        drop_btn.classList.add("nav-btn", "nav-expand-btn");
+        drop_btn.innerHTML = "&#9660;";
+        parent.appendChild(drop_btn); //activity_btn
+        drop_btn.onclick = () => toggle_navmenu_sect(drop_btn);
+        let expand = document.createElement("ul");
+        expand.classList.add("nav-expand-sect");
+        expand.addEventListener("focusin", () => open_navmenu_sect(drop_btn));
+        navmenu.appendChild(expand);
+        return expand;
+    }
+
+    function addSubChild(parent, name, link) {
+        let set_btn = document.createElement("li");
+        set_btn.innerHTML = `<a href="${link}">${name}</a>`;
+        parent.appendChild(set_btn);
+    }
+
+    let homeButton = addListItem("Home", "home.html");
+    let closeBtn = document.createElement("button");
+    closeBtn.classList.add("nav-btn");
+    closeBtn.onclick = close_navmenu;
+    closeBtn.innerHTML = `&#10006;`;
+    homeButton.appendChild(closeBtn);
 
     for (const [act_key, activity] of Object.entries(activities)) {
-        let activity_btn = document.createElement("li");
-        let link = `activity.html?activity=${encodeURIComponent(act_key)}`;
-        activity_btn.innerHTML = `<a href=${link}>${activity.abbr}</a>`;
-        navmenu.appendChild(activity_btn);
+        if (activity.sets.length == 0) {
+            continue;
+        }
+        let activity_btn = addListItem(
+            activity.abbr,
+            `activity.html?activity=${encodeURIComponent(act_key)}`
+        );
 
         if (activity.sets.length > 0) {
-            let drop_btn = document.createElement("button");
-            drop_btn.classList.add("nav-btn", "nav-expand-btn");
-            drop_btn.innerHTML = "&#9660;";
-            activity_btn.appendChild(drop_btn);
-            drop_btn.onclick = () => toggle_navmenu_sect(drop_btn);
-
-            let expand = document.createElement("ul");
-            expand.classList.add("nav-expand-sect");
-            expand.addEventListener("focusin", () =>
-                open_navmenu_sect(drop_btn)
-            );
+            let expand = addDropSection(activity_btn);
             for (const [set_key, set] of Object.entries(activity.sets)) {
-                let set_btn = document.createElement("li");
-                set_btn.innerHTML = `<a href="set.html?activity=${act_key}&set=${set_key}">${set.name}</a>`;
-                expand.appendChild(set_btn);
+                addSubChild(
+                    expand,
+                    set.name,
+                    `set.html?activity=${act_key}&set=${set_key}`
+                );
             }
-            navmenu.appendChild(expand);
         }
     }
     main.appendChild(navmenu);

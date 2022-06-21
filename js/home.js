@@ -13,8 +13,12 @@ function makeActivityCards() {
     for (const [key, activity] of Object.entries(activities)) {
         let card = document.createElement("a");
         card.classList.add("card");
-        card.href = `activity.html?activity=${encodeURIComponent(key)}`;
-        card.innerHTML = `<div><h1>${activity.abbr}</h1><p>${activity.name}</p></div><div class="arrow"></div>`;
+        if (activity.sets.length > 0) {
+            card.href = `activity.html?activity=${encodeURIComponent(key)}`;
+            card.innerHTML = `<div><h1>${activity.abbr}</h1><p>${activity.name}</p></div><div class="arrow"></div>`;
+        } else {
+            card.innerHTML = `<div><h1>${activity.abbr}</h1><p>${activity.name}</p></div>`;
+        }
         console.log(card);
         cards.appendChild(card);
     }

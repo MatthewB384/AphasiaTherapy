@@ -19,7 +19,7 @@ function showDetails(threelines) {
     if (panel.classList.toggle("open")) {
         panel.style.display = "block";
         setTimeout(() => {
-            panel.style.maxWidth = "13rem";
+            panel.style.maxWidth = "15rem";
             panel.style.maxHeight = panel.scrollHeight + "px";
         }, 5);
     } else {
