@@ -28,5 +28,5 @@ function makeActivityCards() {
 makeNavMenu();
 makeRainbowBG();
 makeCMDPalatte();
-makeHeadingBar("Aphasia Therapy");
+makeHeadingBar("Home", "Choose an activity");
 makeActivityCards();

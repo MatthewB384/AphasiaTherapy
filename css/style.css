@@ -149,7 +149,7 @@ p {
     display: flex;
     margin: 1rem 0;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: 1rem 2rem;
     align-items: end;
 }
 
@@ -171,6 +171,41 @@ p {
 .blue:focus {
     color: var(--light-blue);
     border: 0.2rem solid var(--light-blue);
+}
+
+.arrow {
+    --border-width: 0.5rem;
+    --size: 5em;
+    border-radius: 100vh;
+    border: var(--border-width) solid currentColor;
+    box-shadow: 0 0 0.15rem 0rem currentColor;
+    height: var(--size);
+    width: var(--size);
+    position: absolute;
+}
+
+.arrow::before,
+.arrow::after {
+    content: "";
+    background: currentColor;
+    --width: calc(var(--size) / 2);
+    --height: calc(var(--size) / 7);
+    --angle: 45deg;
+    width: var(--width);
+    height: var(--height);
+    border-radius: 100vh;
+    top: calc(50% - var(--height) / 2);
+    left: calc(50% - var(--width) / 2);
+    transform-origin: calc(100% - var(--height) / 2) 50%;
+    position: absolute;
+}
+
+.arrow::before {
+    transform: rotate(var(--angle));
+}
+
+.arrow::after {
+    transform: rotate(calc(-1 * var(--angle)));
 }
 
 .back-btn {
@@ -220,14 +255,14 @@ p {
 }
 
 .welcome-start-btn {
+    font-size: 4rem;
     text-decoration: none;
     position: relative;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    height: 3.5rem;
-    padding: 0 1.2rem 0 4.5rem;
-    font-size: 2.5em;
+    height: 1.4em;
+    padding: 0 0.5em 0 1.7em;
     border-radius: 100vh;
     transition: color 250ms;
     border: none;
@@ -249,44 +284,9 @@ p {
     outline: none;
 }
 
-.arrow {
-    --border-width: 0.5rem;
-    --size: 5em;
-    border-radius: 100vh;
-    border: var(--border-width) solid currentColor;
-    box-shadow: 0 0 0.15rem 0rem currentColor;
-    height: var(--size);
-    width: var(--size);
-    position: absolute;
-}
-
-.arrow::before,
-.arrow::after {
-    content: "";
-    background: currentColor;
-    --width: calc(var(--size) / 2);
-    --height: calc(var(--size) / 7);
-    --angle: 45deg;
-    width: var(--width);
-    height: var(--height);
-    border-radius: 100vh;
-    top: calc(50% - var(--height) / 2);
-    left: calc(50% - var(--width) / 2);
-    transform-origin: calc(100% - var(--height) / 2) 50%;
-    position: absolute;
-}
-
-.arrow::before {
-    transform: rotate(var(--angle));
-}
-
-.arrow::after {
-    transform: rotate(calc(-1 * var(--angle)));
-}
-
 .welcome-start-btn .arrow {
-    --border-width: 0.3rem;
-    --size: calc(3.5rem - 2 * var(--border-width));
+    --border-width: 0.1em;
+    --size: calc(1.4em - 2 * var(--border-width));
     left: 0;
 }
 
@@ -299,21 +299,23 @@ p {
 
 .three-lines {
     --height: 0.5rem;
+    font-size: 1em;
     flex: 0 0 auto;
-    position: relative;
+    display: flex;
+    flex-direction: column;
     color: var(--white-2);
+    padding: 0 0 0.2rem 0;
     transition: color 250ms;
     background: transparent;
     border: none;
+    gap: var(--height);
 }
 
 .three-lines span {
-    display: block;
-    background-color: currentColor;
-    border-radius: 100vh;
     height: var(--height);
     width: calc(6 * var(--height));
-    margin: var(--height) 0;
+    background-color: currentColor;
+    border-radius: 100vh;
 }
 
 .heading .three-lines {

@@ -33,6 +33,7 @@ document.addEventListener("keyup", (e) => {
 });
 
 function makeHomePage() {
+    makeCMDPalatte(true, false, true);
     const wrapper = document.createElement("div");
     wrapper.classList.add("activity");
     let recentResult = getRecentResult(params.activity, params.set);
@@ -158,6 +159,11 @@ function clearPage() {
         child.classList.add("fading");
         setTimeout(() => child.parentNode.removeChild(child), 400);
     }
+    const palatte = document.querySelector(".cmd-palatte");
+    if (palatte !== null) {
+        palatte.classList.add("fading");
+        setTimeout(() => palatte.parentNode.removeChild(palatte), 400);
+    }
     return new Promise((resolve) => setTimeout(resolve, 400)); //allows to be awaited
 }
 
@@ -167,7 +173,6 @@ async function start() {
     }
     startLock = true;
     score = 0;
-    8;
     await clearPage();
 
     makeQuestion(shiftdown ? 9 : 0);
@@ -204,10 +209,12 @@ function makeResultsPage() {
            <b>Return Home</b>
         </a>
     </div>`;
-    activity.children[3].children[0].onclick = function () {
-        start();
+    activity.children[3].children[0].onclick = async function () {
+        await clearPage();
+        makeHomePage();
     };
     document.querySelector(".content").appendChild(activity);
+    makeCMDPalatte(false, true, true);
 }
 
 function finish() {
