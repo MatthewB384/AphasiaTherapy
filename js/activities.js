@@ -326,7 +326,7 @@ let qs = {
     ]),
     f_1: new SWQ("Question 2", sds.swf, imgs.feet, [
         imgs.shells,
-        imgs.mushroom,
+        imgs.pencil,
         imgs.ladder,
     ]),
     f_2: new SWQ("Question 3", sds.swf, imgs.fire, [
@@ -351,7 +351,7 @@ let qs = {
     ]),
     f_6: new SWQ("Question 7", sds.swf, imgs.flower, [
         imgs.dinosaur,
-        imgs.mushroom,
+        imgs.penguin,
         imgs.coffee,
     ]),
     f_7: new SWQ("Question 8", sds.swf, imgs.fork, [

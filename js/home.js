@@ -27,6 +27,6 @@ function makeActivityCards() {
 
 makeNavMenu();
 makeRainbowBG();
-makeCMDPalatte();
+makeCMDPalatte(false, true);
 makeHeadingBar("Home", "Choose an activity");
 makeActivityCards();

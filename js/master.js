@@ -20,7 +20,7 @@ function close_navmenu() {
     navmenu_timeouts.push(
         setTimeout(() => {
             navmenu.style.display = "none";
-        }, 1000)
+        }, 550)
     );
 }
 document.open_navmenu = open_navmenu;
@@ -53,9 +53,11 @@ export function makeNavMenu() {
     navmenu.classList.add("navmenu", "collapsable");
     navmenu.id = "navmenu";
 
-    function addListItem(name, link) {
+    function addListItem(name, link, bezel = true) {
         let activity_btn = document.createElement("li");
-        activity_btn.innerHTML = `<a href=${link}>${name}</a>`; //activity.abbr
+        activity_btn.innerHTML = `<a ${
+            bezel ? 'class="bezel"' : ""
+        }href=${link}>${name}</a>`; //activity.abbr
         navmenu.appendChild(activity_btn);
         return activity_btn;
     }
@@ -106,6 +108,10 @@ export function makeNavMenu() {
             }
         }
     }
+
+    addListItem("Results", "results.html", false);
+    addListItem("Info for Clinicians", "clinician-info.html", false);
+
     main.appendChild(navmenu);
     document.addEventListener("click", (event) => {
         if (event.target.closest(".navmenu") == null) close_navmenu();
@@ -122,30 +128,20 @@ export function makeRainbowBG() {
     main.appendChild(bgwrap);
 }
 
-export function makeCMDPalatte(
-    backBtn = true,
-    seeResults = true,
-    clinicianInfo = true
-) {
+export function makeCMDPalatte(homeBtn = true, backBtn = true) {
     const cmdPalatte = document.createElement("div");
     cmdPalatte.classList.add("cmd-palatte");
     cmdPalatte.innerHTML =
+        (homeBtn
+            ? `<a href="home.html" class="home-btn cmd-btn grey-btn">
+        Home
+    <div class="arrow"></div></a>`
+            : "") +
         (backBtn
-            ? `<button onclick="history.back()" class="back-btn cmd-btn grey-btn">Back<div class="arrow"></div></button>`
-            : ``) +
-        (seeResults
-            ? `
-<a href="results.html" class="cmd-btn grey-btn">
-    See all results
-</a>`
-            : ``) +
-        (clinicianInfo
-            ? `
-<a href="clinician-info.html" class="clinician-info">
-    <button id="clinician-info-btn" class="grey-btn" tabindex="-1">i</button>
-    <label for="clinician-info-btn">Informa<wbr>tion for<br>Clini<wbr>cians</label>
-</a>`
-            : ``);
+            ? `<button onclick="history.back()" class="back-btn cmd-btn grey-btn">
+        &nbsp;Back&nbsp;
+    <div class="arrow"></div></button>`
+            : "");
     main.appendChild(cmdPalatte);
 }
 

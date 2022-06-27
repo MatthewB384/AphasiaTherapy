@@ -7,5 +7,5 @@ import {
 
 makeNavMenu();
 makeRainbowBG();
-makeCMDPalatte(true, true, false);
+makeCMDPalatte();
 makeHeadingBar("Information for Clinicians");

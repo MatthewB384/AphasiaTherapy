@@ -33,7 +33,7 @@ document.addEventListener("keyup", (e) => {
 });
 
 function makeHomePage() {
-    makeCMDPalatte(true, false, true);
+    makeCMDPalatte();
     const wrapper = document.createElement("div");
     wrapper.classList.add("activity");
     let recentResult = getRecentResult(params.activity, params.set);

@@ -9,5 +9,5 @@ import { activities } from "/js/activities.js";
 
 makeNavMenu();
 makeRainbowBG();
-makeCMDPalatte(true, false);
+makeCMDPalatte();
 makeHeadingBar("Results");
