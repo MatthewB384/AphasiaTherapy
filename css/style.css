@@ -97,6 +97,7 @@ p {
 
 .grey-btn,
 .card {
+    -webkit-appearance: none;
     background-color: var(--white-1);
     color: var(--white-2);
     box-shadow: 0 0 0.15rem 0.1rem rgba(var(--white-2-rgb), 0.4);
@@ -658,8 +659,8 @@ p {
 .continue-btn .arrow {
     --border-width: 0.2rem;
     --size: 3rem;
-    right: 1rem;
-    top: 1rem;
+    right: 0.7rem;
+    top: 0.7rem;
 }
 
 @media (max-width: 800px) {
