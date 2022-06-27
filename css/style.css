@@ -367,7 +367,7 @@ p {
 }
 
 .navmenu {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
@@ -649,7 +649,7 @@ p {
 }
 
 .continue-btn {
-    position: absolute;
+    position: fixed;
     bottom: 2rem;
     right: 2rem;
     padding-right: 5rem;
