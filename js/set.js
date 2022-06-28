@@ -206,7 +206,7 @@ function makeResultsPage() {
     <div class="gap-1">
         <button class="grey-btn cmd-btn">Attempt again</button>
         <a class="grey-btn cmd-btn blue" href="activity.html?activity=${params.activity}">
-           <b>Return Home</b>
+           <b>Back to Sets</b>
         </a>
     </div>`;
     activity.children[3].children[0].onclick = async function () {
@@ -214,7 +214,7 @@ function makeResultsPage() {
         makeHomePage();
     };
     document.querySelector(".content").appendChild(activity);
-    makeCMDPalatte(false, true, true);
+    makeCMDPalatte();
 }
 
 function finish() {
